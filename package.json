@@ -1,0 +1,31 @@
+{
+  "name": "tribusaludbackend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon backend/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sthiagomun/TribuSaludBackend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sthiagomun/TribuSaludBackend/issues"
+  },
+  "homepage": "https://github.com/Sthiagomun/TribuSaludBackend#readme",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^7.8.7",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.10"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
