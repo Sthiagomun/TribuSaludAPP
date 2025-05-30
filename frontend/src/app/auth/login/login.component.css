@@ -38,6 +38,22 @@ input[type="password"] {
   font-size: 1rem;
 }
 
+input[type="email"] {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #bdbdbd;
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: #fff;
+  transition: border 0.2s;
+}
+
+input[type="email"]:focus {
+  border: 1.5px solid #1976d2;
+  outline: none;
+  background-color: #fff;
+}
+
 button[type="submit"] {
   background-color: #1976d2;
   color: #fff;

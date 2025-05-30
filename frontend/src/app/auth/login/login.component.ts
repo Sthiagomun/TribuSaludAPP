@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-login',
@@ -10,16 +12,22 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  credentials = { username: '', password: '' };
+  credentials = { email: '', password: '' };
   errorMessage = '';
 
+  constructor(private userService: UserService, private router: Router) {}
+
   onSubmit() {
-    // Lógica de autenticación aquí
-    if (this.credentials.username === 'admin' && this.credentials.password === 'admin') {
-      this.errorMessage = '';
-      // Redirigir o mostrar éxito
-    } else {
-      this.errorMessage = 'Usuario o contraseña incorrectos';
-    }
+    this.userService.login(this.credentials).subscribe({
+      next: (res) => {
+        // Aquí puedes guardar el token si tu backend lo envía
+        // localStorage.setItem('token', res.token);
+        this.errorMessage = '';
+        this.router.navigate(['/']); // Redirige a la página principal o dashboard
+      },
+      error: () => {
+        this.errorMessage = 'Usuario o contraseña incorrectos';
+      }
+    });
   }
 }
