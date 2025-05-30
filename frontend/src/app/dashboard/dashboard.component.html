@@ -1,1 +1,32 @@
-
+<div class="dashboard-container">
+  <div class="dashboard-card" (click)="goTo('pedir-cita')">
+    <span class="material-icons dashboard-icon">event_available</span>
+    <h2>Pedir Cita</h2>
+    <p>Solicita una nueva cita médica.</p>
+  </div>
+  <div class="dashboard-card" (click)="goTo('ver-citas')">
+    <span class="material-icons dashboard-icon">assignment</span>
+    <h2>Ver Mis Citas</h2>
+    <p>Consulta las citas que has solicitado.</p>
+  </div>
+  <div class="dashboard-card" (click)="goTo('cancelar-cita')">
+    <span class="material-icons dashboard-icon">event_busy</span>
+    <h2>Cancelar Cita</h2>
+    <p>Cancela una cita previamente solicitada.</p>
+  </div>
+  <div class="dashboard-card" (click)="goTo('actualizar-datos')">
+    <span class="material-icons dashboard-icon">manage_accounts</span>
+    <h2>Actualizar Datos</h2>
+    <p>Modifica tu información personal.</p>
+  </div>
+  <div class="dashboard-card" (click)="goTo('ver-historial')">
+    <span class="material-icons dashboard-icon">medical_services</span>
+    <h2>Ver Historial Médico</h2>
+    <p>Revisa tu historial médico completo.</p>
+  </div>
+  <div class="dashboard-card" (click)="goTo('profile')">
+    <span class="material-icons dashboard-icon">person</span>
+    <h2>Perfil</h2>
+    <p>Gestiona tu perfil de usuario.</p>
+  </div>
+</div>
