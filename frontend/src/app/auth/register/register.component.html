@@ -4,15 +4,15 @@
   <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
 
     <div class="form-group">
-      <label for="nombre">Nombre completo</label>
+      <label for="nombre"><i class="fa fa-user"></i> Nombre completo</label>
       <input type="text" id="nombre" name="nombre" [(ngModel)]="credentials.nombre" required>
     </div>
     <div class="form-group">
-      <label for="email">Correo</label>
+      <label for="email"><i class="fa fa-envelope"></i> Correo</label>
       <input type="email" id="email" name="email" [(ngModel)]="credentials.email" required>
     </div>
     <div class="form-group">
-      <label for="tipo_de_documento">Tipo de Documento</label>
+      <label for="tipo_de_documento"><i class="fa fa-id-card"></i> Tipo de Documento</label>
       <select id="tipo_de_documento" name="tipo_de_documento" [(ngModel)]="credentials.tipo_de_documento" required>
         <option value="" disabled selected>Seleccione...</option>
         <option value="CC">Cédula de Ciudadanía</option>
@@ -22,11 +22,11 @@
       </select>
     </div>
     <div class="form-group">
-      <label for="documento">Número de Documento</label>
+      <label for="documento"><i class="fa fa-hashtag"></i> Número de Documento</label>
       <input type="text" id="documento" name="documento" [(ngModel)]="credentials.documento" required>
     </div>
     <div class="form-group">
-      <label for="telefono">Teléfono</label>
+      <label for="telefono"><i class="fa fa-phone"></i> Teléfono</label>
       <input
         type="tel"
         id="telefono"
@@ -36,7 +36,7 @@
       >
     </div>
     <div class="form-group">
-      <label for="eps">EPS</label>
+      <label for="eps"><i class="fa fa-hospital"></i> EPS</label>
       <select id="eps" name="eps" [(ngModel)]="credentials.eps" required>
         <option value="" disabled selected>Seleccione su EPS...</option>
         <option value="SURA">SURA</option>
@@ -50,11 +50,11 @@
       </select>
     </div>
     <div class="form-group">
-      <label for="password">Contraseña</label>
+      <label for="password"><i class="fa fa-lock"></i> Contraseña</label>
       <input type="password" id="password" name="password" [(ngModel)]="credentials.password" required>
     </div>
     <div class="form-group">
-      <label for="confirmPassword">Confirmar Contraseña</label>
+      <label for="confirmPassword"><i class="fa fa-lock"></i> Confirmar Contraseña</label>
       <input
         type="password"
         id="confirmPassword"

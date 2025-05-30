@@ -2,7 +2,7 @@
   <h1>Bienvenido a TribuSalud</h1>
   <p>Pide tus Citas Medicas, Registrate o Accede.</p>
   <div class="button-group">
-    <button id="register-btn" type="button" [routerLink]="['/register']">Registrarse</button>
-    <button id="login-btn" type="button" [routerLink]="['/login']">Iniciar Sesión</button>
+    <button id="register-btn" type="button" (click)="goToRegister()">Registrarse</button>
+    <button id="login-btn" type="button" (click)="goToLogin()">Iniciar Sesión</button>
   </div>
 </div>
