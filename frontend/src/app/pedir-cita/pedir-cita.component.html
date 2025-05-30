@@ -1,1 +1,24 @@
-<p>pedir-cita works!</p>
+<h2>Solicita tu cita aqui!</h2>
+<form [formGroup]="appointmentForm" (ngSubmit)="submitForm()">
+  <div class="form-group">
+    <label for="date">Fecha de la cita:</label>
+    <input type="date" id="date" formControlName="date" required>
+  </div>
+
+  <div class="form-group">
+    <label for="time">Hora de la cita:</label>
+    <input type="time" id="time" formControlName="time" required>
+</div>
+    <div class="form-group">
+        <label for="doctor">Médico:</label>
+        <select id="doctor" formControlName="doctor" required>
+        <option *ngFor="let doctor of doctors" [value]="doctor.id">{{ doctor.name }}</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label for="reason">Tipo de Cita</label>
+        <textarea id="reason" formControlName="reason" required></textarea>
+    </div>
+    
+    <button type="submit" [disabled]="appointmentForm.invalid">Solicitar Cita</button>
