@@ -47,9 +47,11 @@ export class PedirCitaComponent {
     this.successMessage = '';
     this.errorMessage = '';
     if (this.appointmentForm.valid) {
+      const userId = localStorage.getItem('userId'); // Esto debe ser el ObjectId real
+
       // Prepara los datos para coincidir con el backend
       const cita = {
-        usuarioId: 'ID_DEL_USUARIO', // Reemplaza esto por el ID real del usuario logueado
+        usuarioId: userId,
         fecha: this.appointmentForm.value.date,
         hora: this.appointmentForm.value.time,
         doctor: this.appointmentForm.value.doctor,
