@@ -12,13 +12,24 @@
     <div class="form-group">
         <label for="doctor">Médico:</label>
         <select id="doctor" formControlName="doctor" required>
-        <option *ngFor="let doctor of doctors" [value]="doctor.id">{{ doctor.name }}</option>
+        <option value="" disabled selected>Selecciona un médico</option>
+          <option *ngFor="let doctor of doctors" [value]="doctor.id">{{ doctor.name }}</option>
         </select>
     </div>
     
     <div class="form-group">
-        <label for="reason">Tipo de Cita</label>
-        <textarea id="reason" formControlName="reason" required></textarea>
-    </div>
+  <label for="reason">Tipo de Cita</label>
+  <select id="reason" formControlName="reason" required>
+    <option value="" disabled selected>Selecciona una opción</option>
+    <option *ngFor="let r of reasons" [value]="r.id">{{ r.name }}</option>
+  </select>
+</div>
     
+    <div class="form-group">
+  <label for="optionalInfo">Información Adicional</label>
+  <textarea id="optionalInfo" formControlName="optionalInfo"></textarea>
+</div>
     <button type="submit" [disabled]="appointmentForm.invalid">Solicitar Cita</button>
+
+<div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+<div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>

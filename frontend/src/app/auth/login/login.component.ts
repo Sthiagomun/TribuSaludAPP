@@ -1,33 +1,32 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router, RouterModule } from '@angular/router'; // <-- AGREGA RouterModule
+import { Router, RouterModule } from '@angular/router';
 import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule], // <-- AGREGA RouterModule aquí
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
   credentials = { email: '', password: '' };
   errorMessage = '';
-  successMessage = ''; // Agrega esta línea
+  successMessage = '';
 
   constructor(private userService: UserService, private router: Router) {}
 
   onSubmit() {
-    this.userService.login(this.credentials).subscribe({
-      next: (res) => {
-        this.errorMessage = '';
-        this.successMessage = '¡Login exitoso! Redirigiendo...';
-        setTimeout(() => {
-          this.router.navigate(['/dashboard']);
-        }, 1500); // Puedes ajustar el tiempo o quitar el setTimeout si no quieres esperar
+    const { email, password } = this.credentials;
+    this.userService.login({ email, password }).subscribe({
+      next: (response) => {
+        console.log('Respuesta del login:', response);
+        localStorage.setItem('userId', response.usuarioId);
+        this.router.navigate(['/dashboard']); // Redirige al dashboard
       },
-      error: () => {
+      error: (err) => {
         this.successMessage = '';
         this.errorMessage = 'Usuario o contraseña incorrectos';
       }

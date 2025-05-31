@@ -17,4 +17,8 @@ export class UserService {
   register(data: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/users`, data);
   }
+
+  getUserById(id: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/users/${id}`);
+  }
 }
