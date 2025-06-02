@@ -24,11 +24,6 @@
     <option *ngFor="let r of reasons" [value]="r.id">{{ r.name }}</option>
   </select>
 </div>
-    
-    <div class="form-group">
-  <label for="optionalInfo">Información Adicional</label>
-  <textarea id="optionalInfo" formControlName="optionalInfo"></textarea>
-</div>
     <button type="submit" [disabled]="appointmentForm.invalid">Solicitar Cita</button>
 
 <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>

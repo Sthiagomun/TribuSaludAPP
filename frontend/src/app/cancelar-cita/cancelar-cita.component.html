@@ -1,1 +1,40 @@
-<p>cancelar-cita works!</p>
+<div class="cancelar-cita-greeting">
+  <h2>
+    <span class="material-symbols-outlined greeting-icon">cancel</span>
+    Cancelar Citas
+  </h2>
+  <p>
+    <span class="material-symbols-outlined greeting-icon">event_busy</span>
+    Selecciona la cita que deseas cancelar:
+  </p>
+</div>
+
+<div *ngIf="(citas?.length ?? 0) > 0; else noCitas" class="citas-list">
+  <div *ngFor="let cita of citas" class="cita-card">
+    <div class="cita-fecha">
+      <span><span class="material-symbols-outlined icono-cita">event</span> {{ cita.fecha | date:'shortDate' }}</span>
+      <span><span class="material-symbols-outlined icono-cita">schedule</span> {{ cita.hora }}</span>
+    </div>
+    <div class="cita-detalle">
+      <span class="material-symbols-outlined icono-cita">medical_services</span>
+      <strong>Doctor:</strong> {{ doctorNombres[cita.doctor] || cita.doctor }}
+    </div>
+    <div class="cita-detalle">
+      <span class="material-symbols-outlined icono-cita">local_hospital</span>
+      <strong>Especialidad:</strong> {{ especialidadNombres[cita.especialidad] || cita.especialidad }}
+    </div>
+    <div class="cita-detalle" *ngIf="cita.observaciones">
+      <span class="material-symbols-outlined icono-cita">notes</span>
+      <strong>Observaciones:</strong> {{ cita.observaciones }}
+    </div>
+    <button class="cancelar-btn" (click)="cancelarCita(cita)">
+      <span class="material-symbols-outlined">cancel</span> Cancelar
+    </button>
+  </div>
+</div>
+<ng-template #noCitas>
+  <p>
+    <span class="material-symbols-outlined greeting-icon">sentiment_sad</span>
+    No tienes citas para cancelar.
+  </p>
+</ng-template>

@@ -39,7 +39,7 @@ export class PedirCitaComponent {
       time: ['', Validators.required],
       doctor: ['', Validators.required],
       reason: ['', Validators.required],
-      optionalInfo: ['']
+      observaciones: [''] // Cambiado de optionalInfo a observaciones
     });
   }
 
