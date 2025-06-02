@@ -1,7 +1,7 @@
 <header class="main-header">
-  <h1>TribuSalud IPS</h1>
+  <div class="logo">TribuSalud IPS</div>
   <nav>
-    <a routerLink="/">Inicio</a>
-    <a routerLink="/about">Acerca de</a>
+    <button (click)="goToDashboard()" class="header-btn">Inicio</button>
+    <button (click)="goToAbout()" class="header-btn">Sobre nosotros</button>
   </nav>
 </header>

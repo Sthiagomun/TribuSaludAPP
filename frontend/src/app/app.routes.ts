@@ -4,6 +4,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PedirCitaComponent } from './pedir-cita/pedir-cita.component';
+import { SobreNosotrosComponent } from './sobre-nosotros/sobre-nosotros.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -16,6 +17,7 @@ export const routes: Routes = [
   { path: 'actualizar-datos', loadComponent: () => import('./actualizar-datos/actualizar-datos.component').then(m => m.ActualizarDatosComponent) },
   { path: 'ver-historial', loadComponent: () => import('./ver-historial/ver-historial.component').then(m => m.VerHistorialComponent) },
   { path: 'profile', loadComponent: () => import('./profile/profile.component').then(m => m.ProfileComponent) },
+  { path: 'sobre-nosotros', component: SobreNosotrosComponent },
   // ...otras rutas...
   { path: '**', redirectTo: '/dashboard' }
 ];

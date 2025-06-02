@@ -1,1 +1,27 @@
-<p>profile works!</p>
+<div class="card" *ngIf="usuario">
+  <h2>Perfil de Usuario</h2>
+  <div class="form-group">
+    <label>Nombre:</label>
+    <p>{{ usuario?.nombre }}</p>
+  </div>
+  <div class="form-group">
+    <label>Email:</label>
+    <p>{{ usuario?.email }}</p>
+  </div>
+  <div class="form-group">
+    <label>Tipo de Documento:</label>
+    <p>{{ usuario?.tipo_de_documento }}</p>
+  </div>
+  <div class="form-group">
+    <label>Número de Documento:</label>
+    <p>{{ usuario?.documento }}</p>
+  </div>
+  <div class="form-group">
+    <label>EPS:</label>
+    <p>{{ usuario?.eps }}</p>
+  </div>
+  <div class="form-group">
+    <label>Teléfono:</label>
+    <p>{{ usuario?.telefono }}</p>
+  </div>
+</div>

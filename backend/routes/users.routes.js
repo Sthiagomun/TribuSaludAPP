@@ -11,6 +11,8 @@ router.put('/:id', userCtlr.updateUser); // Actualizar un usuario
 router.delete('/:id', userCtlr.deleteUser); // Eliminar un usuario
 // Ruta para el login
 router.post('/login', userCtlr.loginUser);
+// Ruta para obtener el perfil del usuario por ID
+router.get('/perfil/:id', userCtlr.getUnicoUsuario);
 
 // Exporta el router
 module.exports = router;

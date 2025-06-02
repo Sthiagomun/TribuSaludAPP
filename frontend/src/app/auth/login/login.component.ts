@@ -23,7 +23,7 @@ export class LoginComponent {
     this.userService.login({ email, password }).subscribe({
       next: (response) => {
         console.log('Respuesta del login:', response);
-        localStorage.setItem('userId', response.usuarioId);
+        localStorage.setItem('userId', response.user.id); // O la propiedad correcta según tu backend
         this.router.navigate(['/dashboard']); // Redirige al dashboard
       },
       error: (err) => {

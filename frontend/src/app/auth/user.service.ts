@@ -4,13 +4,13 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-  private apiUrl = 'http://localhost:3000/api';
+  private apiUrl = 'http://localhost:3000/api/users/';
 
   constructor(private http: HttpClient) {}
 
   // Login: POST /api/login
   login(credentials: { email: string, password: string }): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login`, credentials);
+    return this.http.post(`${this.apiUrl}login`, credentials);
   }
 
   // Registro: POST /api/users
@@ -19,11 +19,15 @@ export class UserService {
   }
 
   getUserById(id: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/users/${id}`);
+    return this.http.get(`${this.apiUrl}${id}`);
   }
 
   // Actualizar usuario: PUT /api/users/:id
   updateUser(id: string, data: any): Observable<any> {
     return this.http.put(`${this.apiUrl}/users/${id}`, data);
+  }
+
+  getPerfil(): Observable<any> {
+    return this.http.get<any>(this.apiUrl);
   }
 }
