@@ -9,6 +9,7 @@ const userSchema = new mongoose.Schema({
     eps: { type: String, required: true },
     password: { type: String, required: true },
     telefono: { type: String, required: true },
+    historialMedico: { type: String }, // Nuevo campo para el historial médico
 }, {
     timestamps: true, // Agrega campos de creación y actualización automáticamente
 });

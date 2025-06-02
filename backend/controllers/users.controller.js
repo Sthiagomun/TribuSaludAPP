@@ -55,29 +55,20 @@ userCtrl.getUnicoUsuario = async (req, res) => {
 // Actualizar un usuario
 userCtrl.updateUser = async (req, res) => {
     try {
-        const { userId, tipo_de_documento, documento, email, password } = req.body;
-
-        // Validar que el userId esté presente
-        if (!userId) {
-            return res.status(400).json({ message: 'El userId es requerido' });
-        }
-
-        // Validar que los demás campos estén presentes
-        if (!tipo_de_documento || !documento || !email || !password) {
+        const { nombre, email, tipo_de_documento, documento, eps, telefono, historialMedico } = req.body;
+        // Validar que los campos requeridos estén presentes
+        if (!nombre || !email || !tipo_de_documento || !documento || !eps || !telefono) {
             return res.status(400).json({ message: 'Todos los campos son requeridos' });
         }
-
         // Actualizar los datos del usuario
         const updatedUser = await Users.findByIdAndUpdate(
-            userId,
-            { tipo_de_documento, documento, email, password },
-            { new: true } // Devuelve el usuario actualizado
+            req.params.id,
+            { nombre, email, tipo_de_documento, documento, eps, telefono, historialMedico },
+            { new: true }
         );
-
         if (!updatedUser) {
             return res.status(404).json({ message: 'Usuario no encontrado' });
         }
-
         res.json({ message: 'Datos actualizados correctamente', user: updatedUser });
     } catch (error) {
         console.error('Error al actualizar los datos del usuario:', error);

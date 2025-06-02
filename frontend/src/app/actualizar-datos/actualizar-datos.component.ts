@@ -23,7 +23,8 @@ export class ActualizarDatosComponent implements OnInit {
       tipo_de_documento: ['', Validators.required],
       documento: ['', Validators.required],
       telefono: ['', Validators.required],
-      eps: ['', Validators.required]
+      eps: ['', Validators.required],
+      historialMedico: [''] // Nuevo campo
     });
   }
 
