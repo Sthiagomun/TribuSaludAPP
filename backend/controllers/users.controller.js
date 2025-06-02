@@ -55,21 +55,39 @@ userCtrl.getUnicoUsuario = async (req, res) => {
 // Actualizar un usuario
 userCtrl.updateUser = async (req, res) => {
     try {
-        const { nombre, email, tipo_de_documento, documento, eps, telefono, historialMedico } = req.body;
-        // Validar que los campos requeridos estén presentes
-        if (!nombre || !email || !tipo_de_documento || !documento || !eps || !telefono) {
-            return res.status(400).json({ message: 'Todos los campos son requeridos' });
-        }
-        // Actualizar los datos del usuario
-        const updatedUser = await Users.findByIdAndUpdate(
-            req.params.id,
-            { nombre, email, tipo_de_documento, documento, eps, telefono, historialMedico },
-            { new: true }
-        );
-        if (!updatedUser) {
+        const { nombre, email, tipo_de_documento, documento, eps, telefono, historialMedico, password, currentPassword } = req.body;
+
+        // Busca el usuario
+        const user = await Users.findById(req.params.id);
+        if (!user) {
             return res.status(404).json({ message: 'Usuario no encontrado' });
         }
-        res.json({ message: 'Datos actualizados correctamente', user: updatedUser });
+
+        // Si se quiere cambiar la contraseña
+        if (password) {
+            if (!currentPassword) {
+                return res.status(400).json({ message: 'Debes ingresar la contraseña actual para cambiar la contraseña.' });
+            }
+            // Compara la contraseña actual (texto plano)
+            if (user.password !== currentPassword) {
+                return res.status(400).json({ message: 'La contraseña actual es incorrecta.' });
+            }
+            // Actualiza la nueva contraseña
+            user.password = password;
+        }
+
+        // Actualiza los demás campos
+        user.nombre = nombre;
+        user.email = email;
+        user.tipo_de_documento = tipo_de_documento;
+        user.documento = documento;
+        user.eps = eps;
+        user.telefono = telefono;
+        user.historialMedico = historialMedico;
+
+        await user.save();
+
+        res.json({ message: 'Datos actualizados correctamente', user });
     } catch (error) {
         console.error('Error al actualizar los datos del usuario:', error);
         res.status(500).json({ message: 'Error al actualizar los datos', error: error.message });

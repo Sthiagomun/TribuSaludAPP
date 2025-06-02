@@ -45,3 +45,8 @@ nav a:hover {
 .header-btn:hover {
   background: #e3e3e3;
 }
+
+.header-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

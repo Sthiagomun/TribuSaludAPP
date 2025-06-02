@@ -47,6 +47,21 @@
     <label for="historialMedico">Historial Médico:</label>
     <textarea id="historialMedico" formControlName="historialMedico"></textarea>
   </div>
+  <p>Nota: Si no deseas cambiar tu contraseña deja estos campos en blanco</p>
+  <!-- Campos para cambiar contraseña -->
+  <div class="form-group">
+    <label for="currentPassword">Contraseña actual:</label>
+    <input type="password" id="currentPassword" formControlName="currentPassword" minlength="6">
+  </div>
+  <div class="form-group">
+    <label for="newPassword">Nueva contraseña:</label>
+    <input type="password" id="newPassword" formControlName="newPassword" minlength="6">
+  </div>
+  <div class="form-group">
+    <label for="confirmPassword">Confirmar nueva contraseña:</label>
+    <input type="password" id="confirmPassword" formControlName="confirmPassword" minlength="6">
+  </div>
+
   <button type="submit" [disabled]="updateForm.invalid">Actualizar Datos</button>
 
   <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>

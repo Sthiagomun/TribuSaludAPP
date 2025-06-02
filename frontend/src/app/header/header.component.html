@@ -1,7 +1,11 @@
 <header class="main-header">
   <div class="logo">TribuSalud IPS</div>
   <nav>
-    <button (click)="goToDashboard()" class="header-btn">Inicio</button>
+    <button 
+      *ngIf="isLoggedIn"
+      (click)="goToDashboard()" 
+      class="header-btn"
+    >Inicio</button>
     <button (click)="goToAbout()" class="header-btn">Sobre nosotros</button>
   </nav>
 </header>
