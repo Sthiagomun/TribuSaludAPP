@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -33,7 +34,7 @@ export class PedirCitaComponent {
   successMessage = '';
   errorMessage = '';
 
-  constructor(private fb: FormBuilder, private appointmentService: AppointmentService) {
+  constructor(private fb: FormBuilder, private appointmentService: AppointmentService, private router: Router) {
     this.appointmentForm = this.fb.group({
       date: ['', Validators.required],
       time: ['', Validators.required],
@@ -62,6 +63,9 @@ export class PedirCitaComponent {
         next: () => {
           this.successMessage = '¡Cita solicitada con éxito!';
           this.appointmentForm.reset();
+          setTimeout(() => {
+              this.router.navigate(['/ver-citas']);
+          }, 1500); // Espera 1.5 segundos antes de redirigir
         },
         error: () => {
           this.errorMessage = 'Ocurrió un error al solicitar la cita.';

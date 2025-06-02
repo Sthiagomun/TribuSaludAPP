@@ -21,4 +21,9 @@ export class UserService {
   getUserById(id: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/users/${id}`);
   }
+
+  // Actualizar usuario: PUT /api/users/:id
+  updateUser(id: string, data: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/users/${id}`, data);
+  }
 }

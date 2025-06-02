@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../auth/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-actualizar-datos',
@@ -15,7 +16,7 @@ export class ActualizarDatosComponent implements OnInit {
   successMessage = '';
   errorMessage = '';
   
-  constructor(private fb: FormBuilder, private userService: UserService) {
+  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
     this.updateForm = this.fb.group({
       nombre: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -55,6 +56,9 @@ export class ActualizarDatosComponent implements OnInit {
           next: (response) => {
             this.successMessage = 'Datos actualizados correctamente';
             this.errorMessage = '';
+            setTimeout(() => {
+              this.router.navigate(['/login']);
+            }, 1500); // Espera 1.5 segundos antes de redirigir
           },
           error: (err) => {
             this.errorMessage = 'Error al actualizar los datos';
